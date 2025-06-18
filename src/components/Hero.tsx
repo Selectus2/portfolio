@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -12,6 +13,11 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen relative flex items-center justify-center overflow-hidden">
+      {/* Sidebar Toggle Button */}
+      <div className="fixed top-4 left-4 z-50">
+        <SidebarTrigger className="bg-black/80 text-white hover:bg-black/90" />
+      </div>
+
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
