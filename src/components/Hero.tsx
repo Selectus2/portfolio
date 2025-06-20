@@ -15,7 +15,7 @@ const Hero = () => {
     <section id="home" className="min-h-screen relative flex items-center justify-center overflow-hidden">
       {/* Sidebar Toggle Button */}
       <div className="fixed top-4 left-4 z-50">
-        <SidebarTrigger className="bg-black/80 text-white hover:bg-black/90" />
+        <SidebarTrigger className="bg-background/80 text-foreground hover:bg-background/90 border border-border" />
       </div>
 
       {/* Background Image */}
@@ -25,7 +25,7 @@ const Hero = () => {
           alt="Background"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
       </div>
 
       {/* Content */}
@@ -58,7 +58,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               onClick={scrollToAbout}
-              className="text-lg px-8 py-6 bg-white text-black hover:bg-gray-200"
+              className="text-lg px-8 py-6 bg-white text-black hover:bg-gray-200 dark:bg-gray-100 dark:text-black dark:hover:bg-white"
             >
               Explore My Work
             </Button>
