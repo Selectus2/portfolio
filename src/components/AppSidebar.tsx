@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Home, User, FolderOpen, Mail, FileText } from "lucide-react";
+import { Home, User, FolderOpen, Mail, FileText, Mic, BookOpen, PenTool, Podcast } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -23,6 +23,10 @@ export function AppSidebar() {
     { icon: Home, label: "Home", sectionId: "home" },
     { icon: User, label: "About", sectionId: "about" },
     { icon: FolderOpen, label: "Portfolio", sectionId: "projects" },
+    { icon: Mic, label: "Talks", sectionId: "talks" },
+    { icon: Podcast, label: "Podcasts", sectionId: "podcasts" },
+    { icon: PenTool, label: "Blogs", sectionId: "blogs" },
+    { icon: BookOpen, label: "Books", sectionId: "books" },
     { icon: FileText, label: "Resume", sectionId: "resume" },
     { icon: Mail, label: "Contact", sectionId: "contact" },
   ];
