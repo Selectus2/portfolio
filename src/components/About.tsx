@@ -7,7 +7,7 @@ const About = () => {
     {
       icon: <Lightbulb className="w-6 h-6" />,
       title: "Problem Solving",
-      description: "Last resort for complex tech issues and troubleshooting challenges"
+      description: "Passionate about solving tough technical challenges"
     },
     {
       icon: <Users className="w-6 h-6" />,

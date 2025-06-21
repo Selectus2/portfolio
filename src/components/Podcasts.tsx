@@ -1,43 +1,79 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Podcast, Clock } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { useEffect, useRef } from "react";
+
+// Add YT type declaration for TypeScript
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+declare global {
+  interface Window {
+    YT: any;
+    onYouTubeIframeAPIReady: () => void;
+  }
+}
 
 const Podcasts = () => {
   const podcasts = [
     {
-      title: "The Tech Problem Solver's Mindset",
-      show: "Tech Talk Weekly",
-      duration: "45 min",
-      date: "February 2024",
-      description: "Deep dive into systematic problem-solving approaches for complex technical challenges.",
-      link: "#"
-    },
-    {
-      title: "Building Communities in Tech",
-      show: "Developer Stories",
-      duration: "38 min",
-      date: "January 2024",
-      description: "My journey organizing meetups and the impact of tech communities on career growth.",
-      link: "#"
-    },
-    {
-      title: "From Employee to Entrepreneur",
-      show: "Startup Journey",
-      duration: "52 min",
-      date: "December 2023",
-      description: "The transition from problem solver to startup founder and lessons learned.",
-      link: "#"
-    },
-    {
-      title: "The Art of Technical Troubleshooting",
-      show: "Code & Coffee",
-      duration: "41 min",
-      date: "November 2023",
-      description: "Advanced debugging techniques and becoming the last resort for tech issues.",
-      link: "#"
+      title: "Vishwajeetsingh Shares His Vision and Experience with AI in Ruby on Rails",
+      show: "RubyConf 2024 Rewind",
+      duration: "9 min",
+      date: "Nov 2024",
+      description: "During the conversation, Vishwajeetsingh Desurkar spills the beans on how AI-driven tools could streamline development workflows, enhance application performance, and enable smarter decision-making within Rails applications.He has also highlighted emerging libraries and frameworks that bring AI capabilities directly into Ruby ecosystems, making it easier for developers to adopt these cutting-edge technologies.",
+      link: "https://www.youtube.com/watch?v=wDtfXBZ61ig&t=25s"
     }
   ];
+
+  const playerRefs = useRef({});
+
+  useEffect(() => {
+    // Load YouTube IFrame API if not already loaded
+    if (!window.YT) {
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.body.appendChild(tag);
+    }
+    // When API is ready, initialize players
+    window.onYouTubeIframeAPIReady = () => {
+      podcasts.forEach((podcast, index) => {
+        if (podcast.link.includes("youtube.com/watch")) {
+          const id = `yt-podcast-player-${index}`;
+          if (!playerRefs.current[id] && document.getElementById(id)) {
+            playerRefs.current[id] = new window.YT.Player(id, {
+              videoId: getYouTubeId(podcast.link),
+              events: {
+                onReady: (event) => onPlayerReady(event, id),
+              },
+              playerVars: {
+                rel: 0,
+                modestbranding: 1,
+                controls: 1,
+                showinfo: 0,
+                mute: 1,
+              },
+            });
+          }
+        }
+      });
+    };
+    // If API is already loaded
+    if (window.YT && window.YT.Player) {
+      window.onYouTubeIframeAPIReady();
+    }
+  }, [podcasts]);
+
+  // Helper to initialize player
+  const onPlayerReady = (event, id) => {
+    playerRefs.current[id] = event.target;
+  };
+
+  // Helper to extract YouTube video ID
+  const getYouTubeId = (url) => {
+    const match = url.match(/[?&]v=([^&#]+)/);
+    return match ? match[1] : null;
+  };
 
   return (
     <section id="podcasts" className="py-20 bg-muted/30">
@@ -71,13 +107,40 @@ const Podcasts = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">{podcast.description}</p>
-                <Button variant="outline" size="sm" asChild>
-                  <a href={podcast.link} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Listen
-                  </a>
-                </Button>
+                <div className="flex flex-col gap-4">
+                  {podcast.link.includes("youtube.com/watch") ? (
+                    <AspectRatio ratio={16 / 9} className="mb-4">
+                      <div
+                        id={`yt-podcast-container-${index}`}
+                        onMouseEnter={async () => {
+                          if (window.YT && playerRefs.current[`yt-podcast-player-${index}`]) {
+                            playerRefs.current[`yt-podcast-player-${index}`].playVideo();
+                          }
+                        }}
+                        onMouseLeave={() => {
+                          if (window.YT && playerRefs.current[`yt-podcast-player-${index}`]) {
+                            playerRefs.current[`yt-podcast-player-${index}`].pauseVideo();
+                          }
+                        }}
+                        style={{ width: "100%", height: "100%" }}
+                      >
+                        <div
+                          id={`yt-podcast-player-${index}`}
+                          style={{ width: "100%", height: "100%" }}
+                        />
+                      </div>
+                    </AspectRatio>
+                  ) : null}
+                  <p className="text-muted-foreground mb-4">{podcast.description}</p>
+                  {!podcast.link.includes("youtube.com/watch") && (
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={podcast.link} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Listen
+                      </a>
+                    </Button>
+                  )}
+                </div>
               </CardContent>
             </Card>
           ))}

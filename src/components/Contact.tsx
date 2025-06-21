@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mail, Github, Linkedin, Twitter, MessageSquare, Calendar } from "lucide-react";
@@ -8,26 +7,26 @@ const Contact = () => {
     {
       icon: <Linkedin className="w-5 h-5" />,
       label: "LinkedIn",
-      href: "#", // User will add later
+      href: "https://www.linkedin.com/in/vishwajeetsinghd/", // User will add later
       description: "Professional network"
     },
     {
       icon: <Github className="w-5 h-5" />,
       label: "GitHub",
-      href: "#", // User will add later
+      href: "https://github.com/selectus2/", // User will add later
       description: "Code repositories"
     },
     {
       icon: <Twitter className="w-5 h-5" />,
       label: "Twitter",
-      href: "#", // User will add later
+      href: "https://x.com/VishwaDesurkar", // User will add later
       description: "Tech thoughts & updates"
     },
     {
       icon: <MessageSquare className="w-5 h-5" />,
-      label: "Discord",
-      href: "#", // User will add later
-      description: "Community discussions"
+      label: "Slack",
+      href: "https://bit.ly/ruby-india", // User will add later
+      description: "Ruby Community discussions"
     }
   ];
 
@@ -53,8 +52,10 @@ const Contact = () => {
                 <p className="text-muted-foreground mb-4">
                   Ready to solve your next tech challenge or discuss collaboration opportunities?
                 </p>
-                <Button size="lg" className="w-full">
-                  Send Email
+                <Button size="lg" className="w-full" asChild>
+                  <a href="mailto:vishwajeetsinghd@gmail.com">
+                    Send Email
+                  </a>
                 </Button>
               </CardContent>
             </Card>
@@ -68,8 +69,10 @@ const Contact = () => {
                 <p className="text-muted-foreground mb-4">
                   Book a time to discuss your project, attend a meetup, or just have a chat.
                 </p>
-                <Button variant="outline" size="lg" className="w-full">
-                  Book Meeting
+                <Button variant="outline" size="lg" className="w-full" asChild>
+                  <a href="https://calendly.com/vishwajeetsinghd/30min" target="_blank" rel="noopener noreferrer">
+                    Book Meeting
+                  </a>
                 </Button>
               </CardContent>
             </Card>
@@ -96,14 +99,14 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="text-center text-muted-foreground">
+          {/* <div className="text-center text-muted-foreground">
             <p className="mb-2">
               <strong>Current Status:</strong> Open to collaborations and startup opportunities
             </p>
             <p>
               <strong>Response Time:</strong> Usually within 24 hours
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

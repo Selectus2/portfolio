@@ -5,42 +5,51 @@ import { ExternalLink, Calendar, BookOpen } from "lucide-react";
 
 const Blogs = () => {
   const blogs = [
-    {
-      title: "The Psychology of Technical Problem Solving",
-      platform: "Medium",
-      date: "March 2024",
-      readTime: "8 min read",
-      description: "Exploring the mental frameworks that make some people naturally better at solving complex technical issues.",
-      link: "#",
-      tags: ["Problem Solving", "Psychology", "Tech"]
-    },
-    {
-      title: "Building a Startup While Working Full-Time",
-      platform: "Dev.to",
-      date: "February 2024", 
-      readTime: "12 min read",
-      description: "Practical strategies for balancing entrepreneurial ambitions with a demanding tech career.",
-      link: "#",
-      tags: ["Startup", "Entrepreneurship", "Career"]
-    },
-    {
-      title: "Why Tech Communities Matter More Than Ever",
-      platform: "Hashnode",
-      date: "January 2024",
-      readTime: "6 min read",
-      description: "The role of meetups and conferences in personal growth and industry advancement.",
-      link: "#",
-      tags: ["Community", "Networking", "Growth"]
-    },
-    {
-      title: "Advanced Debugging: When Stack Overflow Fails",
-      platform: "Medium",
-      date: "December 2023",
-      readTime: "15 min read",
-      description: "A systematic approach to solving those impossible bugs that make you the last resort.",
-      link: "#",
-      tags: ["Debugging", "Programming", "Troubleshooting"]
-    }
+      {
+        title: "A Journey of Learning and Growth",
+        platform: "blog.vishwajeetsingh.in",
+        date: "Estimated 2023",
+        readTime: "3 min read",
+        description: "Reflections on personal and professional growth through curiosity-driven learning and continuous improvement.",
+        link: "https://blog.vishwajeetsingh.in/a-journey-of-learning-and-growth",
+        tags: ["Learning", "Personal Growth", "Reflection"]
+      },
+      {
+        title: "Bringing Intelligence Closer to Home: The Future of Smart Housing with Fog Computing",
+        platform: "blog.vishwajeetsingh.in",
+        date: "Estimated 2023",
+        readTime: "3 min read",
+        description: "An exploration of how fog computing can revolutionize smart homes by improving responsiveness, privacy, and energy efficiency.",
+        link: "https://blog.vishwajeetsingh.in/bringing-intelligence-closer-to-home-the-future-of-smart-housing-with-fog-computing",
+        tags: ["Fog Computing", "Smart Homes", "Edge AI"]
+      },
+      {
+        title: "From Pixels to Poetry: How Generative Adversarial Networks Are Revolutionising Creative Industries",
+        platform: "blog.vishwajeetsingh.in",
+        date: "Estimated 2023",
+        readTime: "3 min read",
+        description: "A look into the creative potential of GANs in fields like design, art, and music, and their impact on the future of human–AI collaboration.",
+        link: "https://blog.vishwajeetsingh.in/from-pixels-to-poetry-how-generative-adversarial-networks-are-revolutionising-creative-industries",
+        tags: ["GANs", "Creativity", "AI"]
+      },
+      {
+        title: "Unleash Rails 7 UI Development with ESBuild",
+        platform: "blog.vishwajeetsingh.in",
+        date: "Estimated late 2023",
+        readTime: "3 min read",
+        description: "A developer guide to using ESBuild with Rails 7 for efficient UI development and better frontend integration.",
+        link: "https://blog.vishwajeetsingh.in/unleash-rails-7-ui-development-with-esbuild",
+        tags: ["Rails 7", "ESBuild", "Frontend"]
+      },
+      {
+        title: "Launch Like a Pro with K6",
+        platform: "blog.vishwajeetsingh.in",
+        date: "Estimated 2023",
+        readTime: "4 min read",
+        description: "A practical introduction to performance testing with K6, helping developers ensure their applications scale reliably under load.",
+        link: "https://blog.vishwajeetsingh.in/launch-like-a-pro-with-k6",
+        tags: ["Performance Testing", "K6", "DevOps"]
+      }    
   ];
 
   return (

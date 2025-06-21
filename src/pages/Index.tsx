@@ -19,7 +19,7 @@ const Index = () => {
           <main className="flex-1">
             <Hero />
             <About />
-            <Projects />
+            {/* <Projects /> */}
             <Talks />
             <Podcasts />
             <Blogs />

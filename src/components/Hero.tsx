@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { SidebarTrigger } from "@/components/ui/sidebar";
@@ -21,7 +20,7 @@ const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1920&h=1080&fit=crop&crop=center"
+          src="/background-2.png"
           alt="Background"
           className="w-full h-full object-cover"
         />
@@ -31,11 +30,11 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
         <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            Vishwajeet Singh
-            <span className="block text-3xl md:text-4xl lg:text-5xl font-normal text-gray-300 mt-4">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          विश्वजितसिंह देसुरकर
+            {/* <span className="block text-3xl md:text-4xl lg:text-5xl font-normal text-gray-300 mt-4">
               Desurkar
-            </span>
+            </span> */}
           </h1>
           
           <div className="mb-8">
@@ -51,7 +50,7 @@ const Hero = () => {
           </div>
           
           <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Known as the last resort for tech issues and passionate about building communities through meetups and conferences. Aspiring entrepreneur with a love for sports.
+          Passionate about solving tough technical challenges and building communities through meetups and conferences. Aspiring entrepreneur with a love for sports.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -66,8 +65,14 @@ const Hero = () => {
               variant="outline" 
               size="lg"
               className="text-lg px-8 py-6 border-white text-white hover:bg-white hover:text-black"
+              onClick={() => {
+                const contactSection = document.getElementById("contact");
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
             >
-              Download Resume
+              Connect
             </Button>
           </div>
         </div>

@@ -5,66 +5,246 @@ import { ExternalLink, Star, BookOpen } from "lucide-react";
 
 const Books = () => {
   const books = [
-    {
-      title: "The Lean Startup",
-      author: "Eric Ries",
-      category: "Entrepreneurship",
-      rating: 5,
-      year: "2024",
-      description: "Essential reading for anyone building a startup. Changed my perspective on product development.",
-      review: "A game-changer for understanding how to build sustainable businesses through validated learning.",
-      link: "#"
-    },
-    {
-      title: "Atomic Habits",
-      author: "James Clear",
-      category: "Self-Improvement",
-      rating: 5,
-      year: "2024",
-      description: "Powerful insights on building good habits and breaking bad ones.",
-      review: "Practical strategies that I've applied to both personal productivity and team management.",
-      link: "#"
-    },
-    {
-      title: "The Pragmatic Programmer",
-      author: "David Thomas & Andrew Hunt",
-      category: "Programming",
-      rating: 5,
-      year: "2023",
-      description: "Timeless advice for software developers at any level.",
-      review: "Still relevant after all these years. Essential for anyone serious about programming.",
-      link: "#"
-    },
-    {
-      title: "Zero to One",
-      author: "Peter Thiel",
-      category: "Entrepreneurship",
-      rating: 4,
-      year: "2023",
-      description: "Contrarian thinking about innovation and startup building.",
-      review: "Thought-provoking ideas about creating monopolies and building the future.",
-      link: "#"
-    },
-    {
-      title: "Deep Work",
-      author: "Cal Newport",
-      category: "Productivity",
-      rating: 5,
-      year: "2023",
-      description: "The ability to focus on cognitively demanding tasks.",
-      review: "Transformed how I approach complex problem-solving and minimize distractions.",
-      link: "#"
-    },
-    {
-      title: "The Mythical Man-Month",
-      author: "Frederick P. Brooks Jr.",
-      category: "Software Engineering",
-      rating: 4,
-      year: "2023",
-      description: "Classic insights on software project management.",
-      review: "Old but gold. Essential reading for understanding why software projects fail.",
-      link: "#"
-    }
+      {
+        "title": "The Mine",
+        "author": "Arnab Ray",
+        "category": "Fiction – Indian",
+        "rating": 3,
+        "year": "2012",
+        "description": "A psychological thriller exploring human greed and mystery inside a haunted mine.",
+        "review": "Fast-paced but with predictable twists.",
+        "link": "#"
+      },
+      {
+        "title": "Hard Times",
+        "author": "Charles Dickens",
+        "category": "Fiction – Global",
+        "rating": 4,
+        "year": "1854",
+        "description": "A social critique of utilitarianism and industrial society in Victorian England.",
+        "review": "Classic Dickens—sharp, moral, and melancholic.",
+        "link": "#"
+      },
+      {
+        "title": "LVOE",
+        "author": "Atticus Poetry",
+        "category": "Poetry – Global",
+        "rating": 4,
+        "year": "2021",
+        "description": "A collection of love, loss, and healing poetry by the Instagram-famous poet.",
+        "review": "Modern, digestible, and emotional.",
+        "link": "#"
+      },
+      {
+        "title": "Drohaparva (Marathi Edition)",
+        "author": "Ajey Zankar",
+        "category": "Fiction – Marathi",
+        "rating": 4,
+        "year": "2016",
+        "description": "Retelling of a critical part of the Mahabharata in Marathi prose.",
+        "review": "Engaging narration of Indian epic with a cultural lens.",
+        "link": "#"
+      },
+      {
+        "title": "The Art of War",
+        "author": "Sun Tzu",
+        "category": "Non-Fiction – Self-Improvement",
+        "rating": 5,
+        "year": "5th century BC",
+        "description": "Ancient Chinese military treatise on strategy, power, and leadership.",
+        "review": "Timeless and applicable to life and business alike.",
+        "link": "#"
+      },
+      {
+        "title": "Siddhartha",
+        "author": "Hermann Hesse",
+        "category": "Fiction – Global",
+        "rating": 5,
+        "year": "1922",
+        "description": "A spiritual journey of self-discovery inspired by the life of Gautama Buddha.",
+        "review": "Philosophical and poetic; a literary gem.",
+        "link": "#"
+      },
+      {
+        "title": "The Secret Of The Nagas",
+        "author": "Amish Tripathi",
+        "category": "Fiction – Indian",
+        "rating": 4,
+        "year": "2011",
+        "description": "Book 2 of the Shiva Trilogy, continuing Shiva's mythological journey.",
+        "review": "Action-packed with rich Indian mythology.",
+        "link": "#"
+      },
+      {
+        "title": "The Oath Of The Vayuputras",
+        "author": "Amish Tripathi",
+        "category": "Fiction – Indian",
+        "rating": 4,
+        "year": "2013",
+        "description": "Final book of the Shiva Trilogy; secrets unfold and destinies are sealed.",
+        "review": "Gripping but a tad lengthy; worth the closure.",
+        "link": "#"
+      },
+      {
+        "title": "Think and Grow Rich",
+        "author": "Napoleon Hill",
+        "category": "Non-Fiction – Self-Improvement",
+        "rating": 4,
+        "year": "1937",
+        "description": "One of the earliest personal development books focused on wealth and mindset.",
+        "review": "Old-school but still relevant for goal-setting.",
+        "link": "#"
+      },
+      {
+        "title": "The Sage's Secret",
+        "author": "Abhinav",
+        "category": "Fiction – Indian",
+        "rating": 3,
+        "year": "2018",
+        "description": "Book 1 of The Kalki Chronicles; a mix of myth and modernity.",
+        "review": "Mythological fiction with good pace, if slightly cliched.",
+        "link": "#"
+      },
+      {
+        "title": "Dr. Jekyll and Mr. Hyde",
+        "author": "Robert Louis Stevenson",
+        "category": "Fiction – Global",
+        "rating": 4,
+        "year": "1886",
+        "description": "A Gothic novella about dual personalities and the nature of evil.",
+        "review": "A psychological classic still studied today.",
+        "link": "#"
+      },
+      {
+        "title": "The 5 AM Club",
+        "author": "Robin S. Sharma",
+        "category": "Non-Fiction – Self-Improvement",
+        "rating": 4,
+        "year": "2018",
+        "description": "Promotes early rising as a key to success with storytelling.",
+        "review": "Transformative if you follow through.",
+        "link": "#"
+      },
+      {
+        "title": "The Psychology of Money",
+        "author": "Morgan Housel",
+        "category": "Non-Fiction – Self-Improvement",
+        "rating": 5,
+        "year": "2020",
+        "description": "Explains money behavior and decision-making with relatable stories.",
+        "review": "Insightful, non-preachy, and very readable.",
+        "link": "#"
+      },
+      {
+        "title": "I Still Think About You",
+        "author": "Arpit Vageria",
+        "category": "Fiction – Indian",
+        "rating": 3,
+        "year": "2018",
+        "description": "A story of love, longing, and heartbreak in modern India.",
+        "review": "Light, emotional, and easy to relate to.",
+        "link": "#"
+      },
+      {
+        "title": "How To Stop Worrying And Start Living",
+        "author": "Dale Carnegie",
+        "category": "Non-Fiction – Self-Improvement",
+        "rating": 4,
+        "year": "1948",
+        "description": "A classic guide to managing stress and finding peace of mind.",
+        "review": "Old but gold—practical advice even today.",
+        "link": "#"
+      },
+      {
+        "title": "The Richest Man In Babylon",
+        "author": "George S. Clason",
+        "category": "Non-Fiction – Self-Improvement",
+        "rating": 4,
+        "year": "1926",
+        "description": "Financial advice delivered through Babylonian parables.",
+        "review": "Simple, timeless, and effective money lessons.",
+        "link": "#"
+      },
+      {
+        "title": "The Immortals Of Meluha",
+        "author": "Amish Tripathi",
+        "category": "Fiction – Indian",
+        "rating": 4,
+        "year": "2010",
+        "description": "The first book in the Shiva Trilogy, reimagining Lord Shiva as a Tibetan tribal leader.",
+        "review": "Unique concept and engaging storytelling.",
+        "link": "#"
+      },
+      {
+        "title": "Murder on the Orient Express",
+        "author": "Agatha Christie",
+        "category": "Fiction – Global",
+        "rating": 5,
+        "year": "1934",
+        "description": "A murder mystery solved by the famous detective Hercule Poirot.",
+        "review": "Masterclass in suspense and whodunit.",
+        "link": "#"
+      },
+      {
+        "title": "The Almanack of Naval Ravikant",
+        "author": "Eric Jorgenson",
+        "category": "Entrepreneurship",
+        "rating": 5,
+        "year": "2020",
+        "description": "Collection of Naval’s thoughts on wealth, happiness, and decision-making.",
+        "review": "Concise and deeply thought-provoking.",
+        "link": "#"
+      },
+      {
+        "title": "Before You Start Up",
+        "author": "Pankaj Goyal",
+        "category": "Entrepreneurship",
+        "rating": 4,
+        "year": "2018",
+        "description": "A beginner’s manual to prepare for launching your startup.",
+        "review": "Practical guide with Indian context.",
+        "link": "#"
+      },
+      {
+        "title": "Ikigai",
+        "author": "Hector Garcia Puigcerver",
+        "category": "Non-Fiction – Self-Improvement",
+        "rating": 4,
+        "year": "2016",
+        "description": "A Japanese philosophy on purpose, longevity, and fulfillment.",
+        "review": "Simple yet impactful insights on meaningful life.",
+        "link": "#"
+      },
+      {
+        "title": "The Lean Startup",
+        "author": "Eric Ries",
+        "category": "Entrepreneurship",
+        "rating": 5,
+        "year": "2011",
+        "description": "Introduces the concept of building products using lean methodology.",
+        "review": "A game-changer for modern startups.",
+        "link": "#"
+      },
+      {
+        "title": "Zero to One",
+        "author": "Peter Thiel, Blake Masters",
+        "category": "Entrepreneurship",
+        "rating": 5,
+        "year": "2014",
+        "description": "Focuses on building unique businesses that create new value.",
+        "review": "Philosophical yet practical startup thinking.",
+        "link": "#"
+      },
+      {
+        "title": "The Marketing Gita",
+        "author": "Prateek Maheshwari, Sagar Venkateshwar",
+        "category": "Entrepreneurship",
+        "rating": 3,
+        "year": "2023",
+        "description": "Applies ancient Hindu philosophy to modern marketing practices.",
+        "review": "Interesting concept; works for fans of spiritual analogies.",
+        "link": "#"
+      }    
   ];
 
   const renderStars = (rating: number) => {
@@ -113,12 +293,12 @@ const Books = () => {
                 <blockquote className="text-sm italic text-foreground mb-4 pl-4 border-l-2 border-primary/20">
                   "{book.review}"
                 </blockquote>
-                <Button variant="outline" size="sm" asChild>
+                {/* <Button variant="outline" size="sm" asChild>
                   <a href={book.link} target="_blank" rel="noopener noreferrer">
                     <BookOpen className="w-4 h-4 mr-2" />
                     View Book
                   </a>
-                </Button>
+                </Button> */}
               </CardContent>
             </Card>
           ))}
