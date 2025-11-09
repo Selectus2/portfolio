@@ -17,12 +17,36 @@ declare global {
 const Talks = () => {
   const talks = [
     {
+      title: "What if… Ruby Led the AI Revolution?",
+      event: "RubyConf India 2025",
+      location: "Jaipur, India",
+      date: "September 2025",
+      description: "What if Ruby never sat out the AI boom? What if it quietly evolved—unlocking the ability to build intelligent apps with semantic understanding, local models, and smart automation? In this talk, we step into an alternate reality where Ruby leads the AI charge.",
+      link: "https://www.youtube.com/watch?v=1h5RZWSL4Oc"
+    },
+    {
+      title: "The Harvey Dent Dilemma: Ruby's White Knight Rises (or Falls)",
+      event: "RubyConf India 2024",
+      location: "Jaipur, India",
+      date: "November 2024",
+      description: "A deep dive into Ruby’s most powerful—and potentially risky—performance features. Topics include frozen strings, memoization, monkey patching, metaprogramming, Proc vs. Lambda, and new enhancements in Ruby 3.0. Learn how to use these advanced tools effectively while avoiding hidden dangers.",
+      link: "https://www.youtube.com/watch?v=8LYHEzQL_-4"
+    },
+    {
       title: "Concurrency Showdown: Threads vs Fibers",
       event: "RubyConf Australia 2024",
       location: "Sydney, Australia",
       date: "April 2024",
       description: "A comparative exploration of Ruby's concurrency models—threads vs fibers. Covers mutex locks, race conditions, deadlocks, and interrupt handling. Demonstrates a hybrid model using fibers for I/O-bound tasks and threads for CPU work, emphasizing Ruby 3.0's fiber enhancements.",
       link: "https://www.youtube.com/watch?v=kU22NJq1sS0"
+    },
+    {
+      title: "Connecting the Dots: Unleash the magic of AI in IoT",
+      event: "Conf42 Internet of Things",
+      location: "Online",
+      date:"December 2023",
+      description: "Dives into AI‑driven IoT solutions using Ruby. Showcases demos on preventive maintenance and anomaly detection with live Ruby-powered IoT devices. Highlights how language features and AI can optimize IoT performance.",
+      link: "https://www.youtube.com/watch?v=Dg8JuIzPUvI"
     },
     {
       title: "Connecting the Dots: Unleash the magic of AI in IoT",
@@ -39,15 +63,8 @@ const Talks = () => {
       date: "August 2022",
       description: "A personal tale of stepping out of conventional corporate structures. Through an intimate narrative, Vishwajeetsingh reflects on life beyond cubicles during his internship, intertwining creativity and code.",
       link: "https://www.youtube.com/watch?v=nnF_fbvtM0w"
-    },
-    {
-      title: "The Harvey Dent Dilemma: Ruby's White Knight Rises (or Falls)",
-      event: "RubyConf India 2024",
-      location: "Jaipur, India",
-      date: "November 2024",
-      description: "A deep dive into Ruby’s most powerful—and potentially risky—performance features. Topics include frozen strings, memoization, monkey patching, metaprogramming, Proc vs. Lambda, and new enhancements in Ruby 3.0. Learn how to use these advanced tools effectively while avoiding hidden dangers.",
-      link: "https://www.youtube.com/watch?v=8LYHEzQL_-4"
     }
+
   ];
 
   const playerRefs = useRef({});
@@ -63,7 +80,7 @@ const Talks = () => {
     window.onYouTubeIframeAPIReady = () => {
       talks.forEach((talk, index) => {
         if (talk.link.includes("youtube.com/watch")) {
-          const id = `yt-player-${index}`;
+          const id = `yt-talk-player-${index}`;
           if (!playerRefs.current[id] && document.getElementById(id)) {
             playerRefs.current[id] = new window.YT.Player(id, {
               videoId: getYouTubeId(talk.link),
@@ -86,8 +103,6 @@ const Talks = () => {
     if (window.YT && window.YT.Player) {
       window.onYouTubeIframeAPIReady();
     }
-    // Cleanup: remove script if needed (optional)
-    // return () => { ... }
   }, [talks]);
 
   // Helper to initialize player
@@ -111,7 +126,7 @@ const Talks = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
           {talks.map((talk, index) => (
             <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
@@ -132,21 +147,21 @@ const Talks = () => {
                   {talk.link.includes("youtube.com/watch") ? (
                     <AspectRatio ratio={16 / 9} className="mb-4">
                       <div
-                        id={`yt-container-${index}`}
+                        id={`yt-talk-container-${index}`}
                         onMouseEnter={async () => {
-                          if (window.YT && playerRefs.current[`yt-player-${index}`]) {
-                            playerRefs.current[`yt-player-${index}`].playVideo();
+                          if (window.YT && playerRefs.current[`yt-talk-player-${index}`]) {
+                            playerRefs.current[`yt-talk-player-${index}`].playVideo();
                           }
                         }}
                         onMouseLeave={() => {
-                          if (window.YT && playerRefs.current[`yt-player-${index}`]) {
-                            playerRefs.current[`yt-player-${index}`].pauseVideo();
+                          if (window.YT && playerRefs.current[`yt-talk-player-${index}`]) {
+                            playerRefs.current[`yt-talk-player-${index}`].pauseVideo();
                           }
                         }}
                         style={{ width: "100%", height: "100%" }}
                       >
                         <div
-                          id={`yt-player-${index}`}
+                          id={`yt-talk-player-${index}`}
                           style={{ width: "100%", height: "100%" }}
                         />
                       </div>
@@ -155,7 +170,7 @@ const Talks = () => {
                   <p className="text-muted-foreground mb-4">{talk.description}</p>
                   <div className="flex justify-between items-center">
                     <span className="font-semibold text-primary">{talk.event}</span>
-                    {!talk.link.includes("youtube.com/watch") && (
+                    {!getYouTubeId(talk.link) && (
                       <Button variant="outline" size="sm" asChild>
                         <a href={talk.link} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="w-4 h-4 mr-2" />
