@@ -1,20 +1,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Calendar, MapPin } from "lucide-react";
+import { ExternalLink, Calendar, MapPin, Play } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { useEffect, useRef } from "react";
-
-// Add YT type declaration for TypeScript
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-declare global {
-  interface Window {
-    YT: any;
-    onYouTubeIframeAPIReady: () => void;
-  }
-}
+import { useState } from "react";
 
 const Talks = () => {
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
+  const [hoveredVideo, setHoveredVideo] = useState<string | null>(null);
+  
   const talks = [
     {
       title: "What if… Ruby Led the AI Revolution?",
@@ -29,7 +22,7 @@ const Talks = () => {
       event: "RubyConf India 2024",
       location: "Jaipur, India",
       date: "November 2024",
-      description: "A deep dive into Ruby’s most powerful—and potentially risky—performance features. Topics include frozen strings, memoization, monkey patching, metaprogramming, Proc vs. Lambda, and new enhancements in Ruby 3.0. Learn how to use these advanced tools effectively while avoiding hidden dangers.",
+      description: "A deep dive into Ruby's most powerful—and potentially risky—performance features. Topics include frozen strings, memoization, monkey patching, metaprogramming, Proc vs. Lambda, and new enhancements in Ruby 3.0. Learn how to use these advanced tools effectively while avoiding hidden dangers.",
       link: "https://www.youtube.com/watch?v=8LYHEzQL_-4"
     },
     {
@@ -64,56 +57,35 @@ const Talks = () => {
       description: "A personal tale of stepping out of conventional corporate structures. Through an intimate narrative, Vishwajeetsingh reflects on life beyond cubicles during his internship, intertwining creativity and code.",
       link: "https://www.youtube.com/watch?v=nnF_fbvtM0w"
     }
-
   ];
 
-  const playerRefs = useRef({});
-
-  useEffect(() => {
-    // Load YouTube IFrame API if not already loaded
-    if (!window.YT) {
-      const tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      document.body.appendChild(tag);
+  // Helper to extract YouTube video ID from various URL formats
+  const getYouTubeId = (url: string) => {
+    try {
+      const urlObj = new URL(url);
+      
+      // youtube.com/watch?v=VIDEO_ID
+      if (urlObj.hostname.includes('youtube.com') && urlObj.pathname === '/watch') {
+        return urlObj.searchParams.get('v');
+      }
+      
+      // youtu.be/VIDEO_ID
+      if (urlObj.hostname === 'youtu.be') {
+        return urlObj.pathname.slice(1).split('?')[0];
+      }
+      
+      // youtube.com/embed/VIDEO_ID
+      if (urlObj.hostname.includes('youtube.com') && urlObj.pathname.startsWith('/embed/')) {
+        return urlObj.pathname.split('/embed/')[1];
+      }
+      
+      // Fallback regex for edge cases
+      const videoIdMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/);
+      return videoIdMatch ? videoIdMatch[1] : null;
+    } catch (error) {
+      console.warn('Invalid YouTube URL:', url);
+      return null;
     }
-    // When API is ready, initialize players
-    window.onYouTubeIframeAPIReady = () => {
-      talks.forEach((talk, index) => {
-        if (talk.link.includes("youtube.com/watch")) {
-          const id = `yt-talk-player-${index}`;
-          if (!playerRefs.current[id] && document.getElementById(id)) {
-            playerRefs.current[id] = new window.YT.Player(id, {
-              videoId: getYouTubeId(talk.link),
-              events: {
-                onReady: (event) => onPlayerReady(event, id),
-              },
-              playerVars: {
-                rel: 0,
-                modestbranding: 1,
-                controls: 1,
-                showinfo: 0,
-                mute: 1,
-              },
-            });
-          }
-        }
-      });
-    };
-    // If API is already loaded
-    if (window.YT && window.YT.Player) {
-      window.onYouTubeIframeAPIReady();
-    }
-  }, [talks]);
-
-  // Helper to initialize player
-  const onPlayerReady = (event, id) => {
-    playerRefs.current[id] = event.target;
-  };
-
-  // Helper to extract YouTube video ID
-  const getYouTubeId = (url) => {
-    const match = url.match(/[?&]v=([^&#]+)/);
-    return match ? match[1] : null;
   };
 
   return (
@@ -144,27 +116,36 @@ const Talks = () => {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-col gap-4">
-                  {talk.link.includes("youtube.com/watch") ? (
-                    <AspectRatio ratio={16 / 9} className="mb-4">
-                      <div
-                        id={`yt-talk-container-${index}`}
-                        onMouseEnter={async () => {
-                          if (window.YT && playerRefs.current[`yt-talk-player-${index}`]) {
-                            playerRefs.current[`yt-talk-player-${index}`].playVideo();
-                          }
-                        }}
-                        onMouseLeave={() => {
-                          if (window.YT && playerRefs.current[`yt-talk-player-${index}`]) {
-                            playerRefs.current[`yt-talk-player-${index}`].pauseVideo();
-                          }
-                        }}
-                        style={{ width: "100%", height: "100%" }}
-                      >
-                        <div
-                          id={`yt-talk-player-${index}`}
-                          style={{ width: "100%", height: "100%" }}
+                  {getYouTubeId(talk.link) ? (
+                    <AspectRatio 
+                      ratio={16 / 9} 
+                      className="mb-4 relative group cursor-pointer"
+                      onMouseEnter={() => setHoveredVideo(talk.link)}
+                      onMouseLeave={() => setHoveredVideo(null)}
+                      onClick={() => setPlayingVideo(playingVideo === talk.link ? null : talk.link)}
+                    >
+                      {playingVideo === talk.link ? (
+                        <iframe
+                          src={`https://www.youtube.com/embed/${getYouTubeId(talk.link)}?rel=0&modestbranding=1&controls=1&autoplay=1&mute=1`}
+                          title={talk.title}
+                          className="w-full h-full rounded-lg border-0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
                         />
-                      </div>
+                      ) : (
+                        <>
+                          <img
+                            src={`https://img.youtube.com/vi/${getYouTubeId(talk.link)}/maxresdefault.jpg`}
+                            alt={talk.title}
+                            className="w-full h-full object-cover rounded-lg"
+                          />
+                          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300 rounded-lg flex items-center justify-center">
+                            <div className="bg-white/90 group-hover:bg-white group-hover:scale-110 transition-all duration-300 rounded-full p-4 shadow-lg">
+                              <Play className="w-8 h-8 text-gray-800 ml-1" fill="currentColor" />
+                            </div>
+                          </div>
+                        </>
+                      )}
                     </AspectRatio>
                   ) : null}
                   <p className="text-muted-foreground mb-4">{talk.description}</p>
