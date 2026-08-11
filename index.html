@@ -3,18 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vish-selectus-showcase</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
 
-    <meta property="og:title" content="vish-selectus-showcase" />
-    <meta property="og:description" content="Lovable Generated Project" />
+    <title>Vishwajeetsingh Desurkar — Tech Problem Solver</title>
+    <meta
+      name="description"
+      content="Vishwajeetsingh Desurkar solves tough technical challenges, speaks at Ruby conferences worldwide, and builds developer communities in India."
+    />
+    <meta name="author" content="Vishwajeetsingh Desurkar" />
+    <link rel="canonical" href="https://vishwajeetsingh.in/" />
+
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:url" content="https://vishwajeetsingh.in/" />
+    <meta property="og:site_name" content="Vishwajeetsingh Desurkar" />
+    <meta property="og:title" content="Vishwajeetsingh Desurkar — Tech Problem Solver" />
+    <meta
+      property="og:description"
+      content="Vishwajeetsingh Desurkar solves tough technical challenges, speaks at Ruby conferences worldwide, and builds developer communities in India."
+    />
+    <!-- TODO(owner): drop a 1200x630 image at public/og.png. Until then link previews fall back to no image. -->
+    <meta property="og:image" content="https://vishwajeetsingh.in/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Vishwajeetsingh Desurkar — Tech Problem Solver, Ruby conference speaker and community builder"
+    />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:site" content="@VishwaDesurkar" />
+    <meta name="twitter:creator" content="@VishwaDesurkar" />
+    <meta name="twitter:image" content="https://vishwajeetsingh.in/og.png" />
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0b1120" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Vishwajeetsingh Desurkar",
+        "url": "https://vishwajeetsingh.in/",
+        "jobTitle": "Tech Problem Solver",
+        "sameAs": [
+          "https://www.linkedin.com/in/vishwajeetsinghd/",
+          "https://x.com/VishwaDesurkar",
+          "https://github.com/selectus2/"
+        ]
+      }
+    </script>
+
+    <script>
+      // Apply the stored theme before first paint so the page never flashes the
+      // wrong palette. ThemeProvider reads the same key and re-applies on mount.
+      (function () {
+        try {
+          var stored = localStorage.getItem("portfolio-theme");
+          var theme =
+            stored && stored !== "system"
+              ? stored
+              : window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          document.documentElement.classList.add(theme);
+        } catch (e) {}
+      })();
+    </script>
   </head>
 
   <body>
