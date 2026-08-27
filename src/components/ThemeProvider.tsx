@@ -27,9 +27,14 @@ export function ThemeProvider({
   storageKey = "vite-ui-theme",
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
-  )
+  // Prerendering runs this component under Node, where localStorage does not
+  // exist. Fall back to the default there; the client picks up the stored value
+  // on hydration, and the inline script in index.html has already painted the
+  // right palette by then.
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window === "undefined") return defaultTheme
+    return (localStorage.getItem(storageKey) as Theme) || defaultTheme
+  })
 
   useEffect(() => {
     const root = window.document.documentElement

@@ -4,22 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Vishwajeetsingh Desurkar — Tech Problem Solver</title>
+    <!--head:start-->
+    <!-- Route-specific tags. Everything between these markers is replaced per
+         route by scripts/prerender.mjs from src/routes.tsx; the values below are
+         the home route's, which is also what `vite dev` serves. -->
+    <title>Vishwajeetsingh Desurkar — Ruby on Rails engineer in Pune</title>
     <meta
       name="description"
-      content="Vishwajeetsingh Desurkar solves tough technical challenges, speaks at Ruby conferences worldwide, and builds developer communities in India."
+      content="Vishwajeetsingh Desurkar is a Pune-based Ruby on Rails engineer who organises the Pune Ruby meetups and Deccan Queen on Rails, and publishes open-source Ruby libraries on RubyGems."
     />
-    <meta name="author" content="Vishwajeetsingh Desurkar" />
     <link rel="canonical" href="https://vishwajeetsingh.in/" />
-
-    <meta property="og:type" content="website" />
     <meta property="og:url" content="https://vishwajeetsingh.in/" />
-    <meta property="og:site_name" content="Vishwajeetsingh Desurkar" />
-    <meta property="og:title" content="Vishwajeetsingh Desurkar — Tech Problem Solver" />
+    <meta property="og:title" content="Vishwajeetsingh Desurkar — Ruby on Rails engineer in Pune" />
     <meta
       property="og:description"
-      content="Vishwajeetsingh Desurkar solves tough technical challenges, speaks at Ruby conferences worldwide, and builds developer communities in India."
+      content="Vishwajeetsingh Desurkar is a Pune-based Ruby on Rails engineer who organises the Pune Ruby meetups and Deccan Queen on Rails, and publishes open-source Ruby libraries on RubyGems."
     />
+    <!--head:end-->
+
+    <meta name="author" content="Vishwajeetsingh Desurkar" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Vishwajeetsingh Desurkar" />
     <!-- TODO(owner): drop a 1200x630 image at public/og.png. Until then link previews fall back to no image. -->
     <meta property="og:image" content="https://vishwajeetsingh.in/og.png" />
     <meta property="og:image:width" content="1200" />
@@ -40,20 +46,21 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#0b1120" />
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Vishwajeetsingh Desurkar",
-        "url": "https://vishwajeetsingh.in/",
-        "jobTitle": "Tech Problem Solver",
-        "sameAs": [
-          "https://www.linkedin.com/in/vishwajeetsinghd/",
-          "https://x.com/VishwaDesurkar",
-          "https://github.com/selectus2/"
-        ]
-      }
-    </script>
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Vishwajeetsingh Desurkar — writing on Ruby and Rails"
+      href="/feed.xml"
+    />
+
+    <!-- Plausible: cookieless, no personal data, nothing to consent to.
+         Confirmed by the owner 2026-08-27. -->
+    <script
+      defer
+      data-domain="vishwajeetsingh.in"
+      src="https://plausible.io/js/script.js"
+    ></script>
+
 
     <script>
       // Apply the stored theme before first paint so the page never flashes the
