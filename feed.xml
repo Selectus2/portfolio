@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vishwajeetsingh Desurkar — writing on Ruby and Rails</title>
+    <link>https://vishwajeetsingh.in/</link>
+    <description>Articles on Ruby, Rails and developer tooling by Vishwajeetsingh Desurkar, a Ruby on Rails engineer in Pune, India.</description>
+    <language>en</language>
+    <atom:link href="https://vishwajeetsingh.in/feed.xml" rel="self" type="application/rss+xml" />
+    <!-- 1 article(s) omitted for want of a URL: launch-like-a-pro-with-k6 -->
+    <item>
+      <title>Unleash Rails 7 UI Development with ESBuild</title>
+      <link>https://blog.vishwajeetsingh.in/unleash-rails-7-ui-development-with-esbuild</link>
+      <guid isPermaLink="true">https://blog.vishwajeetsingh.in/unleash-rails-7-ui-development-with-esbuild</guid>
+      <pubDate>Tue, 17 Oct 2023 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
