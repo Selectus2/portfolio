@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d dist -t",
     "build:client": "vite build",
     "check:content": "node scripts/check-content.mjs",
     "dev:todos": "VITE_SHOW_TODOS=1 vite",
