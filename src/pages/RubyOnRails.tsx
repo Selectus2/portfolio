@@ -13,7 +13,7 @@ import {
 import { PageSection, PageHeading, SectionHeading, Todo } from "@/components/Page";
 import { articles, communities, gems, talks } from "@/content";
 import { formatDate, formatDuration } from "@/lib/format";
-import { EMAIL, LOCATION, NAME } from "@/lib/profile";
+import { DISPLAY_NAME, EMAIL, LOCATION, NAME } from "@/lib/profile";
 
 /**
  * Pillar page. Target reader: someone searching
@@ -27,7 +27,7 @@ export default function RubyOnRails() {
       <PageSection>
         <PageHeading
           title="Ruby on Rails"
-          lede={`${NAME} is a Ruby on Rails engineer based in ${LOCATION.full}. Everything Ruby and Rails in one place: the gems, the conference talks, the writing, and the communities.`}
+          lede={`${DISPLAY_NAME} — ${NAME} — is a Ruby on Rails engineer based in ${LOCATION.full}. Everything Ruby and Rails in one place: the gems, the conference talks, the writing, and the communities.`}
         />
 
         <div className="max-w-3xl mx-auto">

@@ -3,13 +3,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin, ExternalLink, Users } from "lucide-react";
 import { PageSection, PageHeading, SectionHeading } from "@/components/Page";
+import { Marathi } from "@/components/Marathi";
 import {
   BIO_PARAGRAPHS,
   EMAIL,
   JOB_TITLE,
   LOCATION,
   NAME,
-  ALTERNATE_NAME,
+  DISPLAY_NAME,
+  ALTERNATE_NAMES,
+  DEVANAGARI_NAME,
   PROFILE_LINKS,
 } from "@/lib/profile";
 import { communities } from "@/content";
@@ -19,7 +22,7 @@ export default function About() {
     <>
       <PageSection>
         <PageHeading
-          title={`About ${NAME}`}
+          title={`About ${DISPLAY_NAME}`}
           lede={`${JOB_TITLE} based in ${LOCATION.full}.`}
         />
 
@@ -34,13 +37,15 @@ export default function About() {
             permits the alternate spelling in JSON-LD, and hard rule 4 requires
             anything in JSON-LD to appear on the page. */}
         <p className="max-w-3xl mx-auto mt-8 text-center text-muted-foreground">
-          Also written as {ALTERNATE_NAME}.
+          Full name {NAME}. Also written as {ALTERNATE_NAMES[0]}, and in Devanagari{" "}
+          <span lang="mr">{DEVANAGARI_NAME}</span>.
         </p>
 
         <div className="max-w-3xl mx-auto mt-10 flex items-center justify-center space-x-2 text-muted-foreground">
           <MapPin className="w-5 h-5 text-primary" />
           <span>
-            {LOCATION.city}, {LOCATION.region}, {LOCATION.country}
+            <Marathi en="Pune">पुणे</Marathi> — {LOCATION.city}, {LOCATION.region},{" "}
+            {LOCATION.country}
           </span>
         </div>
       </PageSection>

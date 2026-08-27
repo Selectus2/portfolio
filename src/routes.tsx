@@ -13,7 +13,8 @@ import NotFound from "@/pages/NotFound";
 import { articles, books, communities, gems, podcasts, talks } from "@/content";
 import { isoDuration } from "@/lib/format";
 import {
-  ALTERNATE_NAME,
+  ALTERNATE_NAMES,
+  DISPLAY_NAME,
   EMAIL,
   JOB_TITLE,
   LOCATION,
@@ -67,7 +68,7 @@ const person = {
   "@type": "Person",
   "@id": PERSON_ID,
   name: NAME,
-  alternateName: ALTERNATE_NAME,
+  alternateName: ALTERNATE_NAMES,
   jobTitle: JOB_TITLE,
   url: `${SITE_URL}/`,
   email: `mailto:${EMAIL}`,
@@ -200,7 +201,7 @@ export const routes: RouteMeta[] = [
         "@context": "https://schema.org",
         "@type": "ProfilePage",
         url: `${SITE_URL}/about/`,
-        name: `About ${NAME}`,
+        name: `About ${DISPLAY_NAME}`,
         mainEntity: person,
       },
     ],

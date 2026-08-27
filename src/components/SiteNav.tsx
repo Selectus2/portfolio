@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { NAME } from "@/lib/profile";
+import { DISPLAY_NAME } from "@/lib/profile";
 import { NAV_OFFSET, scrollToSection } from "@/lib/scroll";
 
 /**
@@ -85,7 +85,7 @@ export function SiteNav() {
           <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-sm font-bold text-white">
             VS
           </span>
-          <span className="hidden font-semibold sm:inline">{NAME}</span>
+          <span className="hidden font-semibold sm:inline">{DISPLAY_NAME}</span>
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">

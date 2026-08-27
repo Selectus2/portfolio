@@ -18,6 +18,7 @@ import {
   Users,
 } from "lucide-react";
 import { PageSection, SectionHeading, Tag } from "@/components/Page";
+import { Marathi } from "@/components/Marathi";
 import { scrollToSection } from "@/lib/scroll";
 import {
   articles,
@@ -35,6 +36,8 @@ import {
   EMAIL,
   JOB_TITLE,
   LOCATION,
+  DEVANAGARI_NAME,
+  DISPLAY_NAME,
   NAME,
   ONE_LINE_BIO,
   PROFILE_LINKS,
@@ -86,8 +89,14 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto max-w-4xl px-6 py-24 text-center text-white">
           <h1 className="mb-6 text-3xl font-bold leading-tight md:text-5xl lg:text-6xl">
-            {NAME}
+            {DISPLAY_NAME}
           </h1>
+          <p className="mb-2 text-sm uppercase tracking-[0.2em] text-gray-300">
+            <Marathi en="Welcome">आपले स्वागत आहे</Marathi>
+          </p>
+          <p lang="mr" className="mb-6 text-2xl text-gray-200 md:text-3xl">
+            {DEVANAGARI_NAME}
+          </p>
           <p className="mb-8 text-xl text-gray-200 md:text-2xl">
             <span className="relative">
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text font-semibold text-transparent">
@@ -96,7 +105,7 @@ export default function Home() {
               <span className="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-blue-400 to-purple-400" />
             </span>
             <span className="mt-3 block text-lg text-gray-300">
-              {LOCATION.full}
+              <Marathi en="Pune">पुणे</Marathi>, {LOCATION.region}, {LOCATION.country}
             </span>
           </p>
           <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-gray-300 md:text-xl">
@@ -261,7 +270,9 @@ export default function Home() {
                 ) : null}
                 <div className="mt-auto flex flex-wrap gap-2">
                   <Button variant="outline" size="sm" asChild>
-                    <Link to={`/talks/${t.slug}/`}>Details</Link>
+                    <Link to={`/talks/${t.slug}/`} aria-label={`Details of ${t.title}`}>
+                      Details
+                    </Link>
                   </Button>
                   {t.videoUrl ? (
                     <Button variant="ghost" size="sm" asChild>
@@ -337,9 +348,14 @@ export default function Home() {
                 <CardContent className="mt-auto">
                   {href ? (
                     <Button variant="outline" size="sm" asChild>
-                      <a href={href} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Read ${a.title}`}
+                      >
                         <ExternalLink className="mr-2 h-4 w-4" />
-                        Read More
+                        Read on Hashnode
                       </a>
                     </Button>
                   ) : null}
@@ -356,14 +372,21 @@ export default function Home() {
                 <p className="mb-3 text-sm font-medium uppercase tracking-wide text-muted-foreground">
                   Latest article
                 </p>
-                <a
-                  className="inline-flex min-h-11 items-center text-lg font-semibold transition-colors hover:text-primary"
-                  href={article.externalUrl ?? article.canonicalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {article.title}
-                </a>
+                {/* Not every article has a URL on record yet. An <a> with no
+                    href is an uncrawlable dead link, so fall back to text. */}
+                {(article.externalUrl ?? article.canonicalUrl) ? (
+                  <a
+                    className="inline-flex min-h-11 items-center text-lg font-semibold transition-colors hover:text-primary"
+                    href={article.externalUrl ?? article.canonicalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Read ${article.title}`}
+                  >
+                    {article.title}
+                  </a>
+                ) : (
+                  <span className="text-lg font-semibold">{article.title}</span>
+                )}
                 <p className="mt-2 text-sm text-muted-foreground">
                   {formatDate(article.date!)}
                 </p>

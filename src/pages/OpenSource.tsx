@@ -62,13 +62,23 @@ export default function OpenSource() {
 
                 <div className="mt-auto flex flex-wrap gap-2">
                   <Button variant="outline" size="sm" asChild>
-                    <a href={gem.sourceUrl} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={gem.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${gem.name} source on GitHub`}
+                    >
                       <Github className="w-4 h-4 mr-2" />
                       Source
                     </a>
                   </Button>
                   <Button variant="ghost" size="sm" asChild>
-                    <a href={gem.rubygemsUrl} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={gem.rubygemsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${gem.name} on RubyGems`}
+                    >
                       <ExternalLink className="w-4 h-4 mr-2" />
                       RubyGems
                     </a>

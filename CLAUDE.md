@@ -8,6 +8,25 @@ Drop this file at the root of the site repo. Claude Code reads it automatically 
  
 The site's job: be the single page on the web that connects his name to his Ruby/Rails work, his open-source gems, his conference talks, and the communities he organises. Today it does none of that.
  
+## Marathi
+
+He is a Marathi speaker and wants Devanagari used where it fits. The pattern follows
+Deccan Queen on Rails: Marathi is the visible text, the English gloss appears on
+interaction. Use `<Marathi en="English">मराठी</Marathi>` (`src/components/Marathi.tsx`),
+which reveals on hover **and** keyboard focus, and also carries `title` and `lang="mr"`.
+
+**Never write Marathi that is not already verified.** A wrong translation on a proud
+Marathi speaker's own site is worse than no Marathi at all. Verified so far:
+
+| Marathi | English | Source |
+|---|---|---|
+| विश्वजितसिंह देसुरकर | his name | this repo's original `Hero.tsx` |
+| पुणे | Pune | deccanqueenonrails.com |
+| आपले स्वागत आहे | Welcome | deccanqueenonrails.com |
+
+To add more, get the exact strings from the owner or from deccanqueenonrails.com. Do not
+transliterate, machine-translate, or guess.
+
 ## HARD RULES — do not break these
  
 1. **Never invent a fact.** No achievements, talks, employers, clients, contributions, community roles, dates, metrics, testimonials, or logos that are not in the VERIFIED FACTS section below. If a section needs content that isn't listed there, leave a `TODO:` comment and tell the user — do not fill the gap with plausible-sounding copy.
@@ -20,7 +39,18 @@ The site's job: be the single page on the web that connects his name to his Ruby
 ## VERIFIED FACTS — the only claims allowed on this site
  
 ### Identity
-- Name: **Vishwajeetsingh Desurkar** (this exact spelling everywhere; `Vishwajeet Singh Desurkar` is an accepted `alternateName` only in JSON-LD)
+- Name: **Vishwajeetsingh Desurkar** — the full spelling. Use it in `<title>`, meta
+  descriptions and structured data, where the exact string is what search matches on.
+- Known as: **Vishwa** — confirmed by the owner 2026-08-27. This is what the interface
+  calls him: navbar, hero, footer, page headings and conversational copy. Do not put the
+  full name in chrome or body prose where the site is simply addressing him.
+- Devanagari: **विश्वजितसिंह देसुरकर** — he is a Marathi speaker and wants the script
+  used where it fits. This exact string comes from the site's original Hero component;
+  do not transliterate anything new. Always wrap it in an element with `lang="mr"`.
+  Currently shown in the home hero and on /about/.
+- `Vishwajeet Singh Desurkar`, `Vishwa` and `विश्वजितसिंह देसुरकर` are all accepted
+  `alternateName` values in JSON-LD. All three are rendered as visible text on /about/,
+  per hard rule 4.
 - Location: **Pune, Maharashtra, India** (never "Chakan")
 - Email: `vishwajeetsinghd@gmail.com`
 - Site: `https://vishwajeetsingh.in`
@@ -96,7 +126,7 @@ had `link: "#"` for every entry, so no book links to anywhere.
 > Vishwajeetsingh Desurkar is a Pune-based Ruby on Rails engineer who organises the Pune Ruby meetups and Deccan Queen on Rails, and publishes open-source Ruby libraries on RubyGems.
  
 **~100 words (for /about/)**
-> Vishwajeetsingh Desurkar is a developer based in Pune, Maharashtra, India, working across Ruby on Rails, machine-learning tooling, and cloud architecture.
+> Vishwa is a developer based in Pune, Maharashtra, India, working across Ruby on Rails, machine-learning tooling, and cloud architecture.
 >
 > He organises the Pune Ruby meetups, helped form the Ruby India community, organised Rails Girls Pune, and is on the team behind Deccan Queen on Rails — a Rails conference held in Pune.
 >

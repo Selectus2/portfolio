@@ -58,9 +58,14 @@ export default function Writing() {
                 <div className="mt-auto">
                   {href ? (
                     <Button variant="outline" size="sm" asChild>
-                      <a href={href} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Read ${a.title}`}
+                      >
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        Read More
+                        Read on Hashnode
                       </a>
                     </Button>
                   ) : (

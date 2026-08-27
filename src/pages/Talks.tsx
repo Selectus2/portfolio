@@ -64,11 +64,18 @@ export default function Talks() {
               ) : null}
               <div className="mt-auto flex flex-wrap gap-2">
                 <Button variant="outline" size="sm" asChild>
-                  <Link to={`/talks/${talk.slug}/`}>Talk details</Link>
+                  <Link to={`/talks/${talk.slug}/`} aria-label={`Talk details for ${talk.title}`}>
+                    Talk details
+                  </Link>
                 </Button>
                 {talk.videoUrl ? (
                   <Button variant="ghost" size="sm" asChild>
-                    <a href={talk.videoUrl} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={talk.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Watch ${talk.title} on YouTube`}
+                    >
                       <Play className="w-4 h-4 mr-2" />
                       Watch
                     </a>
